@@ -1,0 +1,108 @@
+[
+  {
+    "_id": "692d33e4624bf399dc7929a5",
+    "id": "nphSi/Z-Image-Lora",
+    "likes": 173,
+    "private": false,
+    "downloads": 339699,
+    "tags": [
+      "diffusers",
+      "text-to-image",
+      "lora",
+      "safetensors",
+      "z-image",
+      "base_model:Tongyi-MAI/Z-Image",
+      "base_model:adapter:Tongyi-MAI/Z-Image",
+      "license:apache-2.0",
+      "region:us"
+    ],
+    "pipeline_tag": "text-to-image",
+    "library_name": "diffusers",
+    "createdAt": "2025-12-01T06:21:24.000Z",
+    "modelId": "nphSi/Z-Image-Lora"
+  },
+  {
+    "_id": "654a1d786ae7f66eeba61817",
+    "id": "latent-consistency/lcm-lora-sdv1-5",
+    "likes": 536,
+    "private": false,
+    "downloads": 131337,
+    "tags": [
+      "diffusers",
+      "lora",
+      "text-to-image",
+      "arxiv:2311.05556",
+      "base_model:runwayml/stable-diffusion-v1-5",
+      "base_model:adapter:runwayml/stable-diffusion-v1-5",
+      "license:openrail++",
+      "region:us"
+    ],
+    "pipeline_tag": "text-to-image",
+    "library_name": "diffusers",
+    "createdAt": "2023-11-07T11:20:24.000Z",
+    "modelId": "latent-consistency/lcm-lora-sdv1-5"
+  },
+  {
+    "_id": "68ca2486d75b21836f52a4fb",
+    "id": "lopi999/Wan2.2-I2V_General-NSFW-LoRA",
+    "likes": 153,
+    "private": false,
+    "downloads": 129607,
+    "tags": [
+      "diffusers",
+      "text-to-image",
+      "lora",
+      "template:diffusion-lora",
+      "base_model:Wan-AI/Wan2.2-I2V-A14B",
+      "base_model:adapter:Wan-AI/Wan2.2-I2V-A14B",
+      "region:us",
+      "not-for-all-audiences"
+    ],
+    "pipeline_tag": "text-to-image",
+    "library_name": "diffusers",
+    "createdAt": "2025-09-17T03:01:26.000Z",
+    "modelId": "lopi999/Wan2.2-I2V_General-NSFW-LoRA"
+  },
+  {
+    "_id": "6a6df35fb2dbbf25c87c1df5",
+    "id": "Omnico/Krea2_turbo_diff_loras",
+    "likes": 83,
+    "private": false,
+    "downloads": 90585,
+    "tags": [
+      "diffusers",
+      "text-to-image",
+      "lora",
+      "template:diffusion-lora",
+      "base_model:krea/Krea-2-Turbo",
+      "base_model:adapter:krea/Krea-2-Turbo",
+      "region:us"
+    ],
+    "pipeline_tag": "text-to-image",
+    "library_name": "diffusers",
+    "createdAt": "2026-08-01T13:23:43.000Z",
+    "modelId": "Omnico/Krea2_turbo_diff_loras"
+  },
+  {
+    "_id": "6a81e0f441873aad0340b4e8",
+    "id": "qujincheng/Z-Image-Lora",
+    "likes": 1,
+    "private": false,
+    "downloads": 74123,
+    "tags": [
+      "diffusers",
+      "text-to-image",
+      "lora",
+      "safetensors",
+      "z-image",
+      "base_model:Tongyi-MAI/Z-Image",
+      "base_model:adapter:Tongyi-MAI/Z-Image",
+      "license:apache-2.0",
+      "region:us"
+    ],
+    "pipeline_tag": "text-to-image",
+    "library_name": "diffusers",
+    "createdAt": "2026-08-16T16:10:28.000Z",
+    "modelId": "qujincheng/Z-Image-Lora"
+  }
+]

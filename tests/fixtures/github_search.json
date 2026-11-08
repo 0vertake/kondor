@@ -1,0 +1,23 @@
+{
+  "items": [
+    {
+      "full_name": "alice/product-lora",
+      "html_url": "https://github.com/alice/product-lora",
+      "description": "DreamBooth LoRA trained on product photos",
+      "topics": ["lora", "stable-diffusion", "sdxl"],
+      "stargazers_count": 12,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-06-01T00:00:00Z",
+      "language": "Python",
+      "fork": false
+    },
+    {
+      "full_name": "bob/random-website",
+      "html_url": "https://github.com/bob/random-website",
+      "description": "my blog",
+      "topics": ["html"],
+      "stargazers_count": 0,
+      "fork": false
+    }
+  ]
+}

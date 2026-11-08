@@ -1,0 +1,14 @@
+# Example host crontab for Kondor crawler (adjust paths / compose project).
+# Install: crontab -e  → paste lines below after editing WORKDIR.
+
+WORKDIR=/path/to/kondor
+COMPOSE=docker compose -f $WORKDIR/docker-compose.yml
+
+# Incremental crawl + per-collection rescore/enqueue every 6 hours
+0 */6 * * * cd $WORKDIR && $COMPOSE run --rm crawler run >>/var/log/kondor-crawl.log 2>&1
+
+# Weekly full backfill (Sunday 03:00)
+0 3 * * 0 cd $WORKDIR && $COMPOSE run --rm crawler run --backfill >>/var/log/kondor-backfill.log 2>&1
+
+# Daily health check (alert if exit 1)
+15 6 * * * cd $WORKDIR && $COMPOSE run --rm crawler health >>/var/log/kondor-health.log 2>&1
