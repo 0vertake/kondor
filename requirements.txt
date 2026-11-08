@@ -1,0 +1,12 @@
+# Install torch first. Laptop CPU: pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+# Google Colab already has a GPU build of torch.
+diffusers==0.41.0
+accelerate
+pillow
+numpy
+scipy
+scikit-image
+lpips==0.1.4
+matplotlib
+pandas
+pytest
