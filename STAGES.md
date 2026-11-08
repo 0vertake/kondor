@@ -11,6 +11,7 @@ reproduces that pattern. Reimplemented from the DiffusionShield paper (Cui et al
 | 3. Detector | `stage3_detect.py` | Reads the mark from images and gives a verdict from two statistical tests |
 | 4. Audit | `stage4_audit.py` | Runs a suspect from a crawler record to an evidence report with no manual steps; anything untestable is logged "Not testable", never "clean" |
 | 5. Transfer (E2/E3) | `stage5_transfer.py` | The decisive test: fine-tune one generator on clean images and one on marked images, and see whether the mark appears in the second's outputs |
+| Owner scan | `exp_owner_scan.py` | Scores saved outputs against thousands of other owners, to check decoder bias and false accusations |
 | E7 | `exp_e7_reuse.py` | Checks that one trained engine serves different owners and image domains |
 
 ## What runs where (measured on an 8-core Ryzen 7730U, no GPU, 9.9 GB RAM)
@@ -24,13 +25,21 @@ reproduces that pattern. Reimplemented from the DiffusionShield paper (Cui et al
 | E4, 30 clean fine-tunes | 109 days | 4.7 days |
 | Peak RAM | 9.0 GB | 3.5 GB |
 
-The 256 px model needs a GPU: open `colab/run_pipeline.ipynb` in Google Colab. A 32 px pass supports the
+The 256 px model needs a GPU (about 3 h for E2 on a Colab T4), and is on hold for lack of time. The notebook `colab/run_pipeline.ipynb` runs the 32 px experiments. A 32 px pass supports the
 claim at 32 px only. Not implemented: the latent-diffusion engine (D3) and real crawler parsing (D5 needs a
 sample record), so latent-diffusion suspects are reported as "Not testable".
 
 ## Results so far
 
-None yet. The numbers above are speed measurements; no experiment has finished.
+From one Colab T4 run: 32 px, CIFAR-10 birds, budget 4/255, 2,000 fine-tuning steps, 500 images per model.
+
+- **E1 fails.** Bit accuracy is 99.9% with no attack, but JPEG 90/80/60, WebP 80 and resize to 50% all fall to 46.1%,
+  the same as unmarked images, so the mark is gone. This engine has no corruption training; the paper's 94.45% at
+  JPEG used 8/255 with corruptions added to training. Invisibility: PSNR 37.0 dB, SSIM 0.980, LPIPS 0.00016. Uniformity Z 0.95.
+- **E2 (reduced) passes.** The model fine-tuned on 100% marked images reaches 98.0% bit accuracy on generated images
+  and is Detected. The clean model scores 61.7% and is Not detected, but that score is above chance:
+  `exp_owner_scan.py` investigates it.
+- **Not established:** false-accusation rate (E4), anything at 256 px, repeat runs.
 
 ## Setup
 

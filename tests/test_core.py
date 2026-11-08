@@ -183,3 +183,23 @@ def test_interrupted_fine_tune_resumes_to_identical_weights(tmp_path):
     a = UNet2DModel.from_pretrained(tmp_path / "straight").state_dict()
     b = UNet2DModel.from_pretrained(tmp_path / "cut").state_dict()
     assert all(torch.allclose(a[k], b[k], atol=1e-6) for k in a)
+
+
+def test_owner_scan_separates_biased_decoder_from_real_signal():
+    from exp_owner_scan import decoder_bias, scan
+    rng = np.random.default_rng(5)
+    m = 128
+    owners = rng.integers(0, 2, (300, m), dtype=np.int8)
+    # A decoder stuck on one fixed output: no owner should be detected against a similar reference
+    fixed = rng.integers(0, 2, m, dtype=np.uint8)
+    bits = np.where(rng.random((200, m)) < 0.02, 1 - fixed, fixed).astype(np.uint8)
+    ref = np.where(rng.random((200, m)) < 0.02, 1 - fixed, fixed).astype(np.uint8)
+    r = scan(bits, owners, ref, 1e-3, K=20_000)
+    assert abs(r["std"] - 0.5 / np.sqrt(m)) < 0.01         # scores spread like one coin-flip draw per owner
+    assert r["detected"] <= 2
+    assert decoder_bias(bits, 2)["bits_same_on_90pct_of_images"] > 0.95
+    # A model that really carries owner 0's message is detected for owner 0, and not for the others
+    carrier = np.where(rng.random((200, m)) < 0.05, 1 - owners[0], owners[0]).astype(np.uint8)
+    clean = rng.integers(0, 2, (200, m), dtype=np.uint8)
+    r2 = scan(carrier, owners, clean, 1e-3, K=20_000)
+    assert r2["p1"][0] <= 1e-3 and r2["detected"] <= 3

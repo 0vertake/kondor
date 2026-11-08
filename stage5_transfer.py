@@ -31,8 +31,34 @@ CLASSES = ["airplane", "automobile", "bird", "cat", "deer", "dog", "frog", "hors
 
 def grid(x: torch.Tensor, path, k: int = 8):
     from PIL import Image
+    k = min(k, int(len(x) ** 0.5))
     img = to_pil(torch.cat([torch.cat(list(x[i * k:(i + 1) * k]), dim=2) for i in range(k)], dim=1))
     img.resize((img.width * 3, img.height * 3), Image.Resampling.NEAREST).save(path)
+
+
+def share_curve(results: dict, path):
+    """E3's curve: bit accuracy and verdict against the marked share of the training set."""
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    rows = sorted(((float(k), v) for k, v in results["shares"].items()), key=lambda r: r[0])
+    xs, ys = [r[0] * 100 for r in rows], [r[1]["bit_accuracy"] for r in rows]
+    lo, hi = [r[1]["ci95"][0] for r in rows], [r[1]["ci95"][1] for r in rows]
+    fig, ax = plt.subplots(figsize=(7, 4))
+    ax.errorbar(xs, ys, yerr=[np.array(ys) - lo, np.array(hi) - ys], marker="o", capsize=3, color="tab:blue")
+    for x, y, (_, v) in zip(xs, ys, rows):
+        ax.annotate(v["verdict"], (x, y), textcoords="offset points", xytext=(0, 9), ha="center", fontsize=8)
+    ax.axhline(results["clean_model"]["bit_accuracy"], color="tab:grey", ls="--", label="clean model")
+    ax.set_xscale("log")
+    ax.set_xlabel("marked share of the training set (%)")
+    ax.set_ylabel("bit accuracy on generated images")
+    ax.set_ylim(0.4, 1.05)
+    ax.grid(alpha=0.3)
+    ax.legend()
+    ax.set_title(f"{results['dataset']}, {results['config']}, {results['steps']} steps, {results['n']} images per model")
+    fig.tight_layout()
+    fig.savefig(path, dpi=130)
+    plt.close(fig)
 
 
 def main():
@@ -95,11 +121,20 @@ def main():
         imgs[keep] = marked[keep]
         Xm = get_samples(f"marked{share:g}", imgs)
         grid(Xm, out / f"marked{share:g}_samples.png")
-        v = verdict.decide(eng.decode_bits(Xm), msg, bc).as_dict()
+        bm = eng.decode_bits(Xm)
+        v = verdict.decide(bm, msg, bc).as_dict()
+        # A low share might mark only some outputs: a large spread between images would show that
+        v["per_image_sd"] = float(verdict.bit_accuracy(bm, msg).std())
         results["shares"][str(share)] = v
         print(f"[E2] share {share:g}: {v['verdict']}; bit acc {v['bit_accuracy']:.4f} CI {v['ci95']}; p1 {v['test1']['p']:.2e}; "
               f"p2 {v['test2']['p']:.2e}; clean model {clean_v['bit_accuracy']:.4f}", flush=True)
     (out / "e2.json").write_text(json.dumps(results, indent=2, default=float))
+    if len(results["shares"]) > 1:
+        share_curve(results, out / "e3_curve.png")
+        print("\n[E3] share   verdict        bit acc   per-image SD   p test 1   p test 2")
+        for k, v in sorted(results["shares"].items(), key=lambda r: -float(r[0])):
+            print(f"[E3] {float(k):5.0%}   {v['verdict']:13s}  {v['bit_accuracy']:.4f}    {v['per_image_sd']:.4f}         "
+                  f"{v['test1']['p']:.2e}   {v['test2']['p']:.2e}", flush=True)
     print(f"[stage5] -> {out}")
 
 
