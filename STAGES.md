@@ -51,5 +51,5 @@ python3 -m venv .venv
 .venv/bin/pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
 .venv/bin/pip install -r requirements.txt
 export SHIELD_KEY=$(python3 -c "import secrets;print(secrets.token_hex(32))")   # never commit it
-.venv/bin/python -m pytest -q tests
+.venv/bin/python -m pytest -q tests_shield
 ```
