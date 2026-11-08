@@ -36,6 +36,9 @@ From one Colab T4 run: 32 px, CIFAR-10 birds, budget 4/255, 2,000 fine-tuning st
 - **E1 fails.** Bit accuracy is 99.9% with no attack, but JPEG 90/80/60, WebP 80 and resize to 50% all fall to 46.1%,
   the same as unmarked images, so the mark is gone. This engine has no corruption training; the paper's 94.45% at
   JPEG used 8/255 with corruptions added to training. Invisibility: PSNR 37.0 dB, SSIM 0.980, LPIPS 0.00016. Uniformity Z 0.95.
+- **Robust engines (corruptions added to training) improve this but do not pass E1.** JPEG 80: 46.6% at 4/255, 51.8% at
+  8/255, 89.1% at 8/255 with 8x8 patches and a 32-bit message. Resize 50% passes on all three (90.5%, 95.2%, 99.1%). Only
+  4/255 looks clean: 8/255 shows a tint and the 8x8 engine is clearly visible (LPIPS 0.0095). Their E2 has not run.
 - **E2 (reduced) passes.** The model fine-tuned on 100% marked images reaches 98.0% bit accuracy on generated images
   and is Detected. The clean model scores 61.7% and is Not detected, but that score is above chance:
   `exp_owner_scan.py` investigates it.

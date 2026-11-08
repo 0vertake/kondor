@@ -76,10 +76,13 @@ def main():
     ap.add_argument("--shares", type=float, nargs="+", default=[1.0])
     ap.add_argument("--threads", type=int, default=8)
     ap.add_argument("--tag", default="")
+    ap.add_argument("--pre-jpeg", type=int, default=None,
+                    help="save the training images (clean and marked) as JPEG at this quality before fine-tuning")
+    ap.add_argument("--reuse-clean", default=None, help="run name whose clean model to reuse (same data and settings)")
     a = ap.parse_args()
     torch.set_num_threads(a.threads)
     cfg = CONFIGS[a.config]
-    a.base = a.base or {"px32": "google/ddpm-cifar10-32", "px256": "google/ddpm-celebahq-256"}[a.config]
+    a.base = a.base or {32: "google/ddpm-cifar10-32", 256: "google/ddpm-celebahq-256"}[cfg.image_size]
     eng = Engine.load(cfg)
     if a.images:
         dataset, clean = a.images.name, folder_tensor(a.images, cfg.image_size)
@@ -92,7 +95,15 @@ def main():
     clean = (clean * 255).round() / 255
     W = eng.pattern(msg)
     marked = ((clean + W).clamp(0, 1) * 255).round() / 255
-    run = f"{cfg.name}_s{a.steps}_b{a.batch}_lr{a.lr:g}{a.tag}"
+    if a.pre_jpeg:
+        # The product's real case: images are compressed after marking and before anyone trains on them.
+        if a.reuse_clean:
+            raise SystemExit("--pre-jpeg changes the clean training images, so the clean model cannot be reused")
+        from shield.robust import _real_jpeg
+        squash = lambda x: torch.cat([_real_jpeg(x[i:i + 512], a.pre_jpeg) for i in range(0, len(x), 512)])
+        clean, marked = squash(clean), squash(marked)
+    jq = f"_jpeg{a.pre_jpeg}" if a.pre_jpeg else ""
+    run = f"{cfg.name}_s{a.steps}_b{a.batch}_lr{a.lr:g}{jq}{a.tag}"
     root = WORK / "e2" / run
     out = OUT / "e2" / run
     out.mkdir(parents=True, exist_ok=True)
@@ -102,14 +113,17 @@ def main():
         print(f"[stage5] {name}: fine-tuned, {info['seconds']:.0f}s, loss {info['final_loss']:.4f}", flush=True)
         return cached_sample(root / name, a.n, ddim_steps=a.ddim, batch=a.sample_batch, log=lambda s: print("  " + s, flush=True))
 
-    Xc = get_samples("clean", clean)
+    if a.reuse_clean:
+        Xc = cached_sample(WORK / "e2" / a.reuse_clean / "clean", a.n, ddim_steps=a.ddim, batch=a.sample_batch)
+    else:
+        Xc = get_samples("clean", clean)
     grid(Xc, out / "clean_samples.png")
     bc = eng.decode_bits(Xc)
     bb = eng.decode_bits(cached_sample(a.base, a.n, ddim_steps=a.ddim, batch=a.sample_batch, log=lambda s: print("  " + s, flush=True)))
     clean_v = verdict.decide(bc, msg, bb).as_dict()
     print(f"[E2] clean model vs base: {clean_v['verdict']}; bit acc {clean_v['bit_accuracy']:.4f}; p1 {clean_v['test1']['p']:.2e}; "
           f"p2 {clean_v['test2']['p']:.2e}", flush=True)
-    results = {"base": a.base, "dataset": dataset, "steps": a.steps, "batch": a.batch, "lr": a.lr, "n": a.n, "ddim": a.ddim,
+    results = {"base": a.base, "dataset": dataset, "pre_jpeg": a.pre_jpeg, "steps": a.steps, "batch": a.batch, "lr": a.lr, "n": a.n, "ddim": a.ddim,
                "config": cfg.name, "config_hash": cfg.hash(), "uniformity_Z_training_set": metrics.uniformity(marked - clean),
                "clean_model": clean_v, "base_model_bit_accuracy": float(verdict.bit_accuracy(bb, msg).mean()), "shares": {}}
     # What a perfect generator would give: decoder accuracy on the marked training images themselves

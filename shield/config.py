@@ -26,6 +26,7 @@ class EngineConfig:
     lr: float = 0.01      # SGD, momentum 0.9, weight decay 5e-4 (paper, App. C.3)
     pgd_steps: int = 5    # step size = eps / 10 (paper, App. C.3)
     seed: int = 7
+    robust: bool = False  # train with JPEG, resize, blur and noise (shield/robust.py)
 
     @property
     def blocks(self) -> int:
@@ -44,7 +45,10 @@ class EngineConfig:
         return self.eps255 / 255.0
 
     def hash(self) -> str:
-        blob = json.dumps({"v": ENGINE_VERSION, **asdict(self)}, sort_keys=True).encode()
+        d = asdict(self)
+        if not d["robust"]:
+            d.pop("robust")     # keeps the hash of engines trained before this field existed
+        blob = json.dumps({"v": ENGINE_VERSION, **d}, sort_keys=True).encode()
         return hashlib.sha256(blob).hexdigest()[:12]
 
 
@@ -53,6 +57,11 @@ class EngineConfig:
 CONFIGS = {
     "px32": EngineConfig("px32", 32, 4, 4),
     "px256": EngineConfig("px256", 256, 16, 2, batch=128),
+    # Robust variants (paper Sec. 4.6). Its 94.45% at JPEG used 8/255; 4/255 is the less visible candidate.
+    "px32r4": EngineConfig("px32r4", 32, 4, 4, eps255=4, robust=True),
+    "px32r8": EngineConfig("px32r8", 32, 4, 4, eps255=8, robust=True),
+    # Fallback if 4x4 patches cannot survive JPEG's 8x8 blocks. Only 32 bits, so weaker statistics.
+    "px32r8p8": EngineConfig("px32r8p8", 32, 8, 4, eps255=8, robust=True),
 }
 
 

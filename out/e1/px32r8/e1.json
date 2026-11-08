@@ -1,0 +1,86 @@
+{
+  "config": "px32r8",
+  "config_hash": "ec097fcc47e5",
+  "n_images": 1000,
+  "source": "CIFAR-10 train / test",
+  "message_bits": 128,
+  "eps255": 8,
+  "linf_levels": 8.0,
+  "psnr_mean": 30.96385955810547,
+  "ssim_mean": 0.9328323006629944,
+  "lpips_mean": 0.0023794015869498253,
+  "uniformity_Z": 0.9361157091178803,
+  "attacks": {
+    "none": {
+      "bit_accuracy": 0.99321875,
+      "ci95": [
+        0.9923435546875,
+        0.9940390625
+      ],
+      "wrong_owner_accuracy": 0.51553125,
+      "unmarked_accuracy": 0.4646328125,
+      "attacked_psnr": 30.96385955810547
+    },
+    "jpeg90": {
+      "bit_accuracy": 0.7938671875,
+      "ci95": [
+        0.791257421875,
+        0.79653125
+      ],
+      "wrong_owner_accuracy": 0.4965703125,
+      "unmarked_accuracy": 0.4621015625,
+      "attacked_psnr": 31.63129234313965
+    },
+    "jpeg80": {
+      "bit_accuracy": 0.518,
+      "ci95": [
+        0.5156484375,
+        0.520266015625
+      ],
+      "wrong_owner_accuracy": 0.485125,
+      "unmarked_accuracy": 0.462,
+      "attacked_psnr": 30.460750579833984
+    },
+    "jpeg60": {
+      "bit_accuracy": 0.4629140625,
+      "ci95": [
+        0.4623515625,
+        0.46354707031250003
+      ],
+      "wrong_owner_accuracy": 0.4772578125,
+      "unmarked_accuracy": 0.46125,
+      "attacked_psnr": 28.796058654785156
+    },
+    "webp80": {
+      "bit_accuracy": 0.80278125,
+      "ci95": [
+        0.7993822265625,
+        0.805961328125
+      ],
+      "wrong_owner_accuracy": 0.492171875,
+      "unmarked_accuracy": 0.462734375,
+      "attacked_psnr": 31.307464599609375
+    },
+    "resize50": {
+      "bit_accuracy": 0.952359375,
+      "ci95": [
+        0.949358984375,
+        0.9553359375
+      ],
+      "wrong_owner_accuracy": 0.50603125,
+      "unmarked_accuracy": 0.462625,
+      "attacked_psnr": 25.62938690185547
+    },
+    "center_crop90": {
+      "bit_accuracy": 0.6664140625,
+      "ci95": [
+        0.6644765625,
+        0.668328125
+      ],
+      "wrong_owner_accuracy": 0.5071796875,
+      "unmarked_accuracy": 0.4635546875,
+      "attacked_psnr": 19.30182456970215
+    }
+  },
+  "pass": false
+}

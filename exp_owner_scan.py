@@ -66,13 +66,14 @@ def main():
     ap.add_argument("--base", default="google/ddpm-cifar10-32")
     ap.add_argument("--dataset", default="cifar10-bird")
     ap.add_argument("--alpha", type=float, default=1e-3)
+    ap.add_argument("--clean-run", default=None, help="run holding the clean model, if not this run")
     a = ap.parse_args()
     cfg = CONFIGS[a.run.split("_")[0]]
     eng = Engine.load(cfg)
     key = get_key()
     root = WORK / "e2" / a.run
     decode = lambda model: eng.decode_bits(cached_sample(model, a.n, ddim_steps=a.ddim, log=lambda s: print("  " + s, flush=True)))
-    clean, base, marked = decode(root / "clean"), decode(a.base), decode(root / "marked1")
+    clean, base, marked = decode(WORK / "e2" / (a.clean_run or a.run) / "clean"), decode(a.base), decode(root / "marked1")
     real = marking.message_bits(key, "demo-owner", a.dataset, cfg.message_bits)
     others = np.stack([marking.message_bits(key, f"scan-owner-{i}", a.dataset, cfg.message_bits) for i in range(a.owners)])
     expected_sd = 0.5 / np.sqrt(cfg.message_bits)

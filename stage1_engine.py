@@ -57,10 +57,15 @@ def main():
     a = ap.parse_args()
     torch.set_num_threads(a.threads)
     cfg = CONFIGS[a.config]
+    torch.manual_seed(cfg.seed)
     train, test, source = load_data(a, cfg)
     print(f"[stage1] {cfg.name}: {source}; {cfg.message_bits}-bit message, eps {cfg.eps255}/255", flush=True)
     if a.retrain or not checkpoint_path(cfg).exists():
-        res = train_engine(cfg, train, steps=a.steps)
+        if cfg.robust:
+            from shield.robust import train_robust_engine
+            res = train_robust_engine(cfg, train, steps=a.steps)
+        else:
+            res = train_engine(cfg, train, steps=a.steps)
         path = save_engine(res, {"training_images": source})
         print(f"[stage1] trained in {res['train_seconds']:.0f}s -> {path}", flush=True)
     eng = Engine.load(cfg)
