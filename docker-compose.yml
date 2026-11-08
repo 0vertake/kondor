@@ -1,0 +1,41 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: kondor
+      POSTGRES_PASSWORD: kondor
+      POSTGRES_DB: kondor
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kondor"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  crawler:
+    build: .
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://kondor:kondor@postgres:5432/kondor
+      HF_TOKEN: ${HF_TOKEN:-}
+      CIVITAI_TOKEN: ${CIVITAI_TOKEN:-}
+      GITHUB_TOKEN: ${GITHUB_TOKEN:-}
+      CRAWL_REQUEST_BUDGET: ${CRAWL_REQUEST_BUDGET:-400}
+      ENRICH_BUDGET: ${ENRICH_BUDGET:-40}
+      CRAWL_TIER: ${CRAWL_TIER:-standard}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+    # One-shot. Schedule from the host / k8s CronJob — see scripts/cron.example:
+    #   0 */6 * * * docker compose run --rm crawler run
+    # Weekly backfill:
+    #   0 3 * * 0 docker compose run --rm crawler run --backfill
+    # Daily health:
+    #   15 6 * * * docker compose run --rm crawler health
+    command: ["run"]
+
+volumes:
+  pgdata:

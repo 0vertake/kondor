@@ -1,7 +1,20 @@
 .venv/
+.env
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+.DS_Store
+
+# Dataset-usage detection: secret key, data and working files
+.shield_key
 work/
 data/
-__pycache__/
-*.pyc
-.shield_key
 out_timing.log
+
+# Generated output, except the detection results kept in the repo
+out/*
+!out/e1/
+!out/timing*.json

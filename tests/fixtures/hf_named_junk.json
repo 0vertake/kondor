@@ -1,0 +1,628 @@
+[
+  {
+    "_id": "66bd677b84c23e82ae7e0f57",
+    "id": "city96/FLUX.1-dev-gguf",
+    "private": false,
+    "pipeline_tag": "text-to-image",
+    "library_name": "gguf",
+    "tags": [
+      "gguf",
+      "text-to-image",
+      "image-generation",
+      "flux",
+      "base_model:black-forest-labs/FLUX.1-dev",
+      "base_model:quantized:black-forest-labs/FLUX.1-dev",
+      "license:other",
+      "region:us"
+    ],
+    "downloads": 243115,
+    "likes": 1507,
+    "modelId": "city96/FLUX.1-dev-gguf",
+    "author": "city96",
+    "sha": "3c60ac659f4b1f2ab3ca8bd4488272069b36a148",
+    "lastModified": "2024-08-18T08:14:09.000Z",
+    "gated": false,
+    "disabled": false,
+    "model-index": null,
+    "config": {},
+    "cardData": {
+      "base_model": "black-forest-labs/FLUX.1-dev",
+      "library_name": "gguf",
+      "license": "other",
+      "license_name": "flux-1-dev-non-commercial-license",
+      "license_link": "LICENSE.md",
+      "quantized_by": "city96",
+      "tags": [
+        "text-to-image",
+        "image-generation",
+        "flux"
+      ]
+    },
+    "gguf": {
+      "total": 11901408320,
+      "architecture": "flux",
+      "totalFileSize": 23802870944
+    },
+    "siblings": [
+      {
+        "rfilename": ".gitattributes"
+      },
+      {
+        "rfilename": "LICENSE.md"
+      },
+      {
+        "rfilename": "README.md"
+      },
+      {
+        "rfilename": "flux1-dev-F16.gguf"
+      },
+      {
+        "rfilename": "flux1-dev-Q2_K.gguf"
+      },
+      {
+        "rfilename": "flux1-dev-Q3_K_S.gguf"
+      },
+      {
+        "rfilename": "flux1-dev-Q4_0.gguf"
+      },
+      {
+        "rfilename": "flux1-dev-Q4_1.gguf"
+      },
+      {
+        "rfilename": "flux1-dev-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "flux1-dev-Q5_0.gguf"
+      },
+      {
+        "rfilename": "flux1-dev-Q5_1.gguf"
+      },
+      {
+        "rfilename": "flux1-dev-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "flux1-dev-Q6_K.gguf"
+      },
+      {
+        "rfilename": "flux1-dev-Q8_0.gguf"
+      }
+    ],
+    "spaces": [
+      "fastgpu/vram-and-gpu-cost-calculator",
+      "radames/Real-Time-Latent-Consistency-Model",
+      "radames/Real-Time-SD-Turbo",
+      "radames/real-time-pix2pix-turbo",
+      "huanhoang/flux2",
+      "Deddy/FLUX-Wallpaper-HD-Maker",
+      "PeepDaSlan9/HYDRAS_flux2",
+      "colbyford/flux2",
+      "huan2hoang3/flux2",
+      "rizoa/flux3",
+      "K00B404/FLUX-Wallpaper-HD-Maker_p",
+      "Akbartus/FluxSchnell",
+      "K00B404/flux_666",
+      "andresampa/LS-AI-img-gen",
+      "andresampa/CtB-AI-img-gen",
+      "fdsgfdvbf/flux2",
+      "K00B404/NEW_FLUX",
+      "mkrystal/Real-Time-Latent-Consistency-Model",
+      "marlonbarrios/Real-Time-Latent-Consistency-Model",
+      "Mrgf9993/Real-Time-Latent-Consistency-Model",
+      "zaql/real-time-pix2pix-turbo",
+      "Jhoni08/vram-and-gpu-cost-calculator"
+    ],
+    "createdAt": "2024-08-15T02:27:07.000Z",
+    "usedStorage": 103095555576
+  },
+  {
+    "_id": "6948791fc522cdf43eda93f4",
+    "id": "unsloth/Z-Image-Turbo-GGUF",
+    "private": false,
+    "pipeline_tag": "text-to-image",
+    "library_name": "ggml",
+    "tags": [
+      "ggml",
+      "gguf",
+      "quantized",
+      "unsloth",
+      "text-to-image",
+      "en",
+      "arxiv:2511.22699",
+      "arxiv:2511.22677",
+      "arxiv:2511.13649",
+      "base_model:Tongyi-MAI/Z-Image-Turbo",
+      "base_model:quantized:Tongyi-MAI/Z-Image-Turbo",
+      "license:apache-2.0",
+      "region:us"
+    ],
+    "downloads": 996032,
+    "likes": 297,
+    "modelId": "unsloth/Z-Image-Turbo-GGUF",
+    "author": "unsloth",
+    "sha": "b40f712c569ecfff42f2307dcc43399ae1d71318",
+    "lastModified": "2026-10-29T08:24:01.000Z",
+    "gated": false,
+    "disabled": false,
+    "widgetData": [
+      {
+        "text": "cute sloth in starry night style",
+        "output": {
+          "url": "https://huggingface.co/unsloth/Z-Image-Turbo-GGUF/resolve/main/assets/sloth_gogh.png"
+        }
+      }
+    ],
+    "model-index": null,
+    "config": {},
+    "cardData": {
+      "base_model": "Tongyi-MAI/Z-Image-Turbo",
+      "license": "apache-2.0",
+      "language": [
+        "en"
+      ],
+      "pipeline_tag": "text-to-image",
+      "library_name": "ggml",
+      "tags": [
+        "gguf",
+        "quantized",
+        "unsloth"
+      ],
+      "widget": [
+        {
+          "text": "cute sloth in starry night style",
+          "output": {
+            "url": "https://huggingface.co/unsloth/Z-Image-Turbo-GGUF/resolve/main/assets/sloth_gogh.png"
+          }
+        }
+      ]
+    },
+    "gguf": {
+      "total": 6154908736,
+      "architecture": "lumina2",
+      "totalFileSize": 12311939136
+    },
+    "siblings": [
+      {
+        "rfilename": ".gitattributes"
+      },
+      {
+        "rfilename": "README.md"
+      },
+      {
+        "rfilename": "assets/DMDR.webp"
+      },
+      {
+        "rfilename": "assets/Z-Image-Gallery.pdf"
+      },
+      {
+        "rfilename": "assets/architecture.webp"
+      },
+      {
+        "rfilename": "assets/decoupled-dmd.webp"
+      },
+      {
+        "rfilename": "assets/leaderboard.png"
+      },
+      {
+        "rfilename": "assets/leaderboard.webp"
+      },
+      {
+        "rfilename": "assets/reasoning.png"
+      },
+      {
+        "rfilename": "assets/showcase.jpg"
+      },
+      {
+        "rfilename": "assets/showcase_editing.png"
+      },
+      {
+        "rfilename": "assets/showcase_realistic.png"
+      },
+      {
+        "rfilename": "assets/showcase_rendering.png"
+      },
+      {
+        "rfilename": "assets/sloth_gogh.png"
+      },
+      {
+        "rfilename": "assets/sloth_mall.png"
+      },
+      {
+        "rfilename": "assets/sloth_sign.png"
+      },
+      {
+        "rfilename": "assets/sloth_wes.png"
+      },
+      {
+        "rfilename": "z-image-turbo-BF16.gguf"
+      },
+      {
+        "rfilename": "z-image-turbo-F16.gguf"
+      },
+      {
+        "rfilename": "z-image-turbo-Q2_K.gguf"
+      },
+      {
+        "rfilename": "z-image-turbo-Q3_K_M.gguf"
+      },
+      {
+        "rfilename": "z-image-turbo-Q3_K_S.gguf"
+      },
+      {
+        "rfilename": "z-image-turbo-Q4_0.gguf"
+      },
+      {
+        "rfilename": "z-image-turbo-Q4_1.gguf"
+      },
+      {
+        "rfilename": "z-image-turbo-Q4_K_M.gguf"
+      },
+      {
+        "rfilename": "z-image-turbo-Q4_K_S.gguf"
+      },
+      {
+        "rfilename": "z-image-turbo-Q5_0.gguf"
+      },
+      {
+        "rfilename": "z-image-turbo-Q5_1.gguf"
+      },
+      {
+        "rfilename": "z-image-turbo-Q5_K_M.gguf"
+      },
+      {
+        "rfilename": "z-image-turbo-Q5_K_S.gguf"
+      },
+      {
+        "rfilename": "z-image-turbo-Q6_K.gguf"
+      },
+      {
+        "rfilename": "z-image-turbo-Q8_0.gguf"
+      }
+    ],
+    "spaces": [
+      "KwabsHug/GameConfigIdea",
+      "rahul7star/Z-Image-Turbo-GGUF-Q4_K_M",
+      "CJJ-on-HF/Z-Image-Turbo-CPU",
+      "rahul7star/Zimg-gguf",
+      "programmersd/Zitc",
+      "programmersd/zimageturbogguf",
+      "alidev2002/model-test",
+      "BeefyDoesAI/Z-Image_Turbo",
+      "kashafnaseer2007/ltx-video-generator",
+      "EngineeringWithJay/zimage-mirror",
+      "localellm/WebGPU-z-image-turbo-gguf",
+      "kayraharika/zimage-gguf-q8-0-test",
+      "YashKotak/devatlas-ai-gpu"
+    ],
+    "createdAt": "2025-12-21T22:47:59.000Z",
+    "usedStorage": 174203652791
+  },
+  {
+    "_id": "64bfcd5ff462a99a04fd1ec8",
+    "id": "stabilityai/stable-diffusion-xl-base-1.0",
+    "private": false,
+    "pipeline_tag": "text-to-image",
+    "library_name": "diffusers",
+    "tags": [
+      "diffusers",
+      "onnx",
+      "safetensors",
+      "text-to-image",
+      "stable-diffusion",
+      "arxiv:2307.01952",
+      "arxiv:2211.01324",
+      "arxiv:2108.01073",
+      "arxiv:2112.10752",
+      "license:openrail++",
+      "endpoints_compatible",
+      "diffusers:StableDiffusionXLPipeline",
+      "deploy:sagemaker",
+      "deploy:azure",
+      "region:us"
+    ],
+    "downloads": 4657863,
+    "likes": 8445,
+    "modelId": "stabilityai/stable-diffusion-xl-base-1.0",
+    "author": "stabilityai",
+    "sha": "462165984030d82259a11f4367a4eed129e94a7b",
+    "lastModified": "2023-10-30T16:03:47.000Z",
+    "gated": false,
+    "disabled": false,
+    "model-index": null,
+    "config": {
+      "diffusers": {
+        "_class_name": "StableDiffusionXLPipeline"
+      }
+    },
+    "cardData": {
+      "license": "openrail++",
+      "tags": [
+        "text-to-image",
+        "stable-diffusion"
+      ]
+    },
+    "siblings": [
+      {
+        "rfilename": ".gitattributes"
+      },
+      {
+        "rfilename": "01.png"
+      },
+      {
+        "rfilename": "LICENSE.md"
+      },
+      {
+        "rfilename": "README.md"
+      },
+      {
+        "rfilename": "comparison.png"
+      },
+      {
+        "rfilename": "model_index.json"
+      },
+      {
+        "rfilename": "pipeline.png"
+      },
+      {
+        "rfilename": "scheduler/scheduler_config.json"
+      },
+      {
+        "rfilename": "sd_xl_base_1.0.safetensors"
+      },
+      {
+        "rfilename": "sd_xl_base_1.0_0.9vae.safetensors"
+      },
+      {
+        "rfilename": "sd_xl_offset_example-lora_1.0.safetensors"
+      },
+      {
+        "rfilename": "text_encoder/config.json"
+      },
+      {
+        "rfilename": "text_encoder/flax_model.msgpack"
+      },
+      {
+        "rfilename": "text_encoder/model.fp16.safetensors"
+      },
+      {
+        "rfilename": "text_encoder/model.onnx"
+      },
+      {
+        "rfilename": "text_encoder/model.safetensors"
+      },
+      {
+        "rfilename": "text_encoder/openvino_model.bin"
+      },
+      {
+        "rfilename": "text_encoder/openvino_model.xml"
+      },
+      {
+        "rfilename": "text_encoder_2/config.json"
+      },
+      {
+        "rfilename": "text_encoder_2/flax_model.msgpack"
+      },
+      {
+        "rfilename": "text_encoder_2/model.fp16.safetensors"
+      },
+      {
+        "rfilename": "text_encoder_2/model.onnx"
+      },
+      {
+        "rfilename": "text_encoder_2/model.onnx_data"
+      },
+      {
+        "rfilename": "text_encoder_2/model.safetensors"
+      },
+      {
+        "rfilename": "text_encoder_2/openvino_model.bin"
+      },
+      {
+        "rfilename": "text_encoder_2/openvino_model.xml"
+      },
+      {
+        "rfilename": "tokenizer/merges.txt"
+      },
+      {
+        "rfilename": "tokenizer/special_tokens_map.json"
+      },
+      {
+        "rfilename": "tokenizer/tokenizer_config.json"
+      },
+      {
+        "rfilename": "tokenizer/vocab.json"
+      },
+      {
+        "rfilename": "tokenizer_2/merges.txt"
+      },
+      {
+        "rfilename": "tokenizer_2/special_tokens_map.json"
+      },
+      {
+        "rfilename": "tokenizer_2/tokenizer_config.json"
+      },
+      {
+        "rfilename": "tokenizer_2/vocab.json"
+      },
+      {
+        "rfilename": "unet/config.json"
+      },
+      {
+        "rfilename": "unet/diffusion_flax_model.msgpack"
+      },
+      {
+        "rfilename": "unet/diffusion_pytorch_model.fp16.safetensors"
+      },
+      {
+        "rfilename": "unet/diffusion_pytorch_model.safetensors"
+      },
+      {
+        "rfilename": "unet/model.onnx"
+      },
+      {
+        "rfilename": "unet/model.onnx_data"
+      },
+      {
+        "rfilename": "unet/openvino_model.bin"
+      },
+      {
+        "rfilename": "unet/openvino_model.xml"
+      },
+      {
+        "rfilename": "vae/config.json"
+      },
+      {
+        "rfilename": "vae/diffusion_flax_model.msgpack"
+      },
+      {
+        "rfilename": "vae/diffusion_pytorch_model.fp16.safetensors"
+      },
+      {
+        "rfilename": "vae/diffusion_pytorch_model.safetensors"
+      },
+      {
+        "rfilename": "vae_1_0/config.json"
+      },
+      {
+        "rfilename": "vae_1_0/diffusion_pytorch_model.fp16.safetensors"
+      },
+      {
+        "rfilename": "vae_1_0/diffusion_pytorch_model.safetensors"
+      },
+      {
+        "rfilename": "vae_decoder/config.json"
+      },
+      {
+        "rfilename": "vae_decoder/model.onnx"
+      },
+      {
+        "rfilename": "vae_decoder/openvino_model.bin"
+      },
+      {
+        "rfilename": "vae_decoder/openvino_model.xml"
+      },
+      {
+        "rfilename": "vae_encoder/config.json"
+      },
+      {
+        "rfilename": "vae_encoder/model.onnx"
+      },
+      {
+        "rfilename": "vae_encoder/openvino_model.bin"
+      },
+      {
+        "rfilename": "vae_encoder/openvino_model.xml"
+      }
+    ],
+    "spaces": [
+      "RioShiina/ImageGen",
+      "yanze/PuLID-FLUX",
+      "multimodalart/lora-ease",
+      "frogleo/AI-Clothes-Changer",
+      "hugging-apps/t3-video-4k",
+      "yisol/IDM-VTON",
+      "Nymbo/Serverless-ImgGen-Hub",
+      "fffiloni/InstantIR",
+      "tencent/Hunyuan3D-2mv",
+      "frogleo/Image-to-3D",
+      "kandinskylab/Kandinsky-6.0-Pro-distill-5s",
+      "HTBris/zerogpu-sdxlTrainer",
+      "salehes01/Selvix-swahili-ai",
+      "launch-calcium/zerogpu-sdxlTrainer2-py311",
+      "hugging-apps/sparkle-video-background-replacement-2605",
+      "InstantX/InstantID",
+      "VAST-AI/TripoSG",
+      "lllyasviel/Omost",
+      "radames/Real-Time-Latent-Consistency-Model",
+      "radames/Real-Time-Text-to-Image-SDXL-Lightning",
+      "YupengZhou/StoryDiffusion",
+      "yanze/PuLID",
+      "diffusers/stable-diffusion-xl-inpainting",
+      "AP123/SDXL-Lightning",
+      "okaris/omni-zero",
+      "Shopify/background-replacement",
+      "InstantX/InstantStyle",
+      "jasperai/LBM_relighting",
+      "radames/Enhance-This-HiDiffusion-SDXL",
+      "hysts/SDXL",
+      "jallenjia/Change-Clothes-AI",
+      "Nymbo/Virtual-Try-On",
+      "ByteDance/SDXL-Lightning",
+      "radames/Enhance-This-DemoFusion-SDXL",
+      "TIGER-Lab/GenAI-Arena",
+      "TencentARC/T2I-Adapter-SDXL",
+      "sudo-ai/zero123plus-demo-space",
+      "songweig/rich-text-to-image",
+      "latentexplorers/latentnavigation-flux",
+      "fffiloni/Music-To-Image",
+      "BoobyBoobs/Flux_Lustly_AI_Uncensored_NSFW_V1",
+      "stepfun-ai/Step1X-3D",
+      "ByteDance/Hyper-SDXL-1Step-T2I",
+      "TencentARC/T2I-Adapter-SDXL-Sketch",
+      "tencent/Hunyuan3D-2mini-Turbo",
+      "VAST-AI/MV-Adapter-I2MV-SDXL",
+      "fantaxy/flx-pulid",
+      "fffiloni/text-guided-image-colorization",
+      "fffiloni/ZeST",
+      "AP123/Upside-Down-Diffusion",
+      "openfree/ColorRevive",
+      "linoyts/scribble-sdxl-flash",
+      "embedl/hfviewer",
+      "latent-consistency/lcm-lora-for-sdxl",
+      "radames/Real-Time-Latent-Consistency-Model-Text-To-Image",
+      "artificialguybr/artificialguybr-demo-lora",
+      "PAIR/StreamingT2V",
+      "chansung/co-write-with-llama2",
+      "jasperai/flash-lora",
+      "tonyassi/fashion-try-on",
+      "aiqtech/kofaceid",
+      "ChenyangSi/FreeU",
+      "ginipick/time-machine",
+      "multimodalart/one-step-comparison",
+      "ymzhang319/FoleyCrafter",
+      "turboedit/turbo_edit",
+      "xingpng/CSGO",
+      "VAST-AI/MV-Adapter-Img2Texture",
+      "multimodalart/perturbed-attention-guidance-sdxl",
+      "exx8/differential-diffusion",
+      "multimodalart/lora-roulette",
+      "garibida/ReNoise-Inversion",
+      "fffiloni/sdxl-dpo",
+      "radames/Real-Time-SD-Turbo",
+      "Nymbo/Compare-6",
+      "radames/MistoLine-ControlNet-demo",
+      "artificialguybr/JUGGERNAUT-XL-FREE-DEMO",
+      "radames/real-time-pix2pix-turbo",
+      "huanngzh/MV-Adapter-T2MV-Anime",
+      "VAST-AI/MV-Adapter-Text2Texture",
+      "wangfuyun/Phased-Consistency-Model-PCM",
+      "TencentARC/ColorFlow",
+      "ginipick/AccDiffusion",
+      "Kwai-Kolors/Kolors-FaceID",
+      "fffiloni/sdxl-control-loras",
+      "multimodalart/civitai-to-hf",
+      "JOY-Huang/InstantIR",
+      "baulab/ConceptSliders",
+      "IP-composer/ip-composer",
+      "linoyts/scribble-sdxl",
+      "multimodalart/Boogu-Image",
+      "TIGER-Lab/AnyV2V",
+      "tight-inversion/tight-inversion",
+      "clinteroni/outpainting-with-differential-diffusion-demo",
+      "briaai/BRIA-Eraser-API",
+      "jeasinema/UltraEdit-SD3",
+      "tight-inversion/tight-inversion-pulid-demo",
+      "fffiloni/StyleAligned_Transfer",
+      "wcy1122/MGM",
+      "latent-consistency/Real-Time-LCM-ControlNet-Lora-SD1.5"
+    ],
+    "createdAt": "2023-07-25T13:25:51.000Z",
+    "safetensors": {
+      "parameters": {
+        "F32": 2567463684
+      },
+      "total": 2567463684
+    },
+    "inference": "warm",
+    "usedStorage": 77369456618
+  }
+]
