@@ -1,0 +1,7 @@
+.venv/
+work/
+data/
+__pycache__/
+*.pyc
+.shield_key
+out_timing.log

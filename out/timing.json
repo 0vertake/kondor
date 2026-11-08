@@ -1,0 +1,21 @@
+{
+  "model": "google/ddpm-cifar10-32",
+  "params_million": 35.746307,
+  "image_size": 32,
+  "threads": 8,
+  "load_seconds": 18.535797834396362,
+  "batch": 32,
+  "seconds_per_train_step": 5.757458019256592,
+  "seconds_per_image_train": 0.1799205631017685,
+  "peak_rss_gb_train": 3.4884872436523438,
+  "seconds_per_unet_forward": 0.07546097040176392,
+  "extrapolation": {
+    "assumed_finetune_steps": 2000,
+    "one_finetune_hours": 3.1985877884758844,
+    "one_image_ddim50_seconds": 3.773048520088196,
+    "500_images_ddim50_hours": 0.5240345166789161,
+    "E2_two_finetunes_plus_sampling_hours": 7.445244610309601,
+    "E3_five_shares_hours": 18.613111525774002,
+    "E4_30_clean_finetunes_hours": 111.67866915464401
+  }
+}

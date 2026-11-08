@@ -1,0 +1,21 @@
+{
+  "model": "google/ddpm-celebahq-256",
+  "params_million": 113.673219,
+  "image_size": 256,
+  "threads": 8,
+  "load_seconds": 39.36037015914917,
+  "batch": 4,
+  "seconds_per_train_step": 126.62024980783463,
+  "seconds_per_image_train": 31.655062451958656,
+  "peak_rss_gb_train": 8.97458267211914,
+  "seconds_per_unet_forward": 2.4027090668678284,
+  "extrapolation": {
+    "assumed_finetune_steps": 2000,
+    "one_finetune_hours": 70.3445832265748,
+    "one_image_ddim50_seconds": 120.13545334339142,
+    "500_images_ddim50_hours": 16.685479631026585,
+    "E2_two_finetunes_plus_sampling_hours": 174.06012571520276,
+    "E3_five_shares_hours": 435.1503142880069,
+    "E4_30_clean_finetunes_hours": 2610.901885728041
+  }
+}
